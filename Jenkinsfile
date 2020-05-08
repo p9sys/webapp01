@@ -3,7 +3,7 @@ pipeline {
 	
 	environment {
 
-	  	GITHUB_ORGANIZATION = "p9sys"
+	  	GITHUB_ORGANIZATION = "p9sys"	
 	  	GITHUB_REPO = "webapp01"
 	  	DOCKERHUB_REGISTRY = "pf9sys/webapp01"
  	}
@@ -27,7 +27,7 @@ pipeline {
         	}
         }	
 
-        Stage ('PUBLISH') {
+        stage ('PUBLISH') {
         	environment {
            
             	registryCredential = 'dockerhub'
@@ -46,7 +46,7 @@ pipeline {
 
         }
 
-        Stage ('DEPLOY') {
+        stage ('DEPLOY') {
         	steps {
 
         		sh 'kubectl apply -f k8s/app.yaml'
