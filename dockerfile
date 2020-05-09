@@ -1,5 +1,3 @@
-# FROM node:11.1.0-alpine as build
-
 FROM node:14.0.0-alpine as build
 
 WORKDIR /app
