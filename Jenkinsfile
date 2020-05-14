@@ -22,7 +22,9 @@ pipeline {
       	stage ('BUILD') {
         	steps {
 
-          		sh 'npm install'
+          		sh 'npm config rm proxy'
+              sh 'npm config rm https-proxy'
+              sh 'npm install'
 
         	}
         }	
