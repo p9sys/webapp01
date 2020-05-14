@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package*.json /app/
 
+RUN npm config rm proxy
+RUN npm config rm https-proxy
 RUN npm install
 
 COPY ./ /app/
