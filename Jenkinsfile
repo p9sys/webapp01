@@ -36,7 +36,7 @@ pipeline {
           	steps {
 
                	 	script {
-				def appimage = docker.build("${DOCKERHUB_REGISTRY}", "--build-arg network=host . ")	
+				def appimage = docker.build("${DOCKERHUB_REGISTRY}:${env.BUILD_ID} --network=host")	
                     	docker.withRegistry( '', registryCredential ) {
                         	appimage.push()
                         	appimage.push('latest')
