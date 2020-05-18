@@ -23,9 +23,8 @@ pipeline {
         	steps {
 
           		sh 'npm config rm proxy'
-              sh 'npm config rm https-proxy'
-              sh 'npm install'
-
+                        sh 'npm config rm https-proxy'
+              
         	}
         }	
 
@@ -37,7 +36,7 @@ pipeline {
           	steps {
 
                	 	script {
-                    	def appimage = docker.build("DOCKERHUB_REGISTRY + ":$BUILD_NUMBER"", "--build-arg network=host . ")	
+				def appimage = docker.build("${DOCKERHUB_REGISTRY}", "--build-arg network=host . ")	
                     	docker.withRegistry( '', registryCredential ) {
                         	appimage.push()
                         	appimage.push('latest')
