@@ -36,7 +36,7 @@ pipeline {
           	steps {
 
                	 	script {
-				def appimage = ${DOCKERHUB_REGISTRY}:${env.BUILD_ID}
+				def appimage = "${DOCKERHUB_REGISTRY}:${env.BUILD_ID}"
 				docker.build("${DOCKERHUB_REGISTRY}:${env.BUILD_ID} --network=host")	
                     		docker.withRegistry( '', registryCredential ) {
                         	appimage.push()
